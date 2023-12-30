@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  cache:
+    image: 'bitnami/redis:latest'
+    container_name: cache
+    environment:
+      - REDIS_PASSWORD=Develop3r
+#      - REDIS_ACLFILE=/opt/bitnami/redis/mounted-etc/users.acl
+#    volumes:
+#      - ./users.acl:/opt/bitnami/redis/mounted-etc/users.acl
+    restart: always
+    ports:
+      - '6379:6379'

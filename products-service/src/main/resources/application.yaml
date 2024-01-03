@@ -2,12 +2,16 @@ spring:
   application:
     name: products-service
 
+  profiles:
+    active: local
+
   data:
     redis:
       port: 6379
       host: localhost
       username: default
       password: Develop3r
+      replica-group-id: ""
 
 management:
   endpoints:
@@ -18,6 +22,10 @@ management:
 logging:
   level:
     root: info
+    org:
+      springframework:
+        data:
+          redis: trace
     io:
       lettuce:
-        core: debug
+        core: trace

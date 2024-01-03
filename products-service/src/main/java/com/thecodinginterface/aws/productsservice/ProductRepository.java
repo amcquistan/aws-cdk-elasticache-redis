@@ -1,5 +1,7 @@
 package com.thecodinginterface.aws.productsservice;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
@@ -9,8 +11,11 @@ import java.util.Optional;
 @Repository
 public class ProductRepository {
 
+    static final Logger log = LoggerFactory.getLogger(ProductRepository.class);
+
     @Cacheable(value = "products")
     public List<Product> list() {
+        log.info("*** fetching fresh list (no caching)");
         try {
             Thread.sleep(10_000);
         } catch (InterruptedException e) {
